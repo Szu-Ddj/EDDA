@@ -4,7 +4,6 @@
 # Copyright (C) 2019. All Rights Reserved.
 import torch
 import torch.nn as nn
-import torch.nn.functional as F
 class MultiAttRule(nn.Module):
     def __init__(self,hid_dim,heads=4,batch_first=True):
         super(MultiAttRule, self).__init__()
@@ -36,5 +35,5 @@ class BERT_RN(nn.Module):
         # rx_l = r_attention_mask.sum(1).to('cuda')
         out,_score = self.att(pooled.unsqueeze(1),rlast_hidden,rlast_hidden)
         out = nn.ReLU()(out.squeeze(1))
-        return F.softmax(self.dense(self.lambadd * out + pooled), -1)
+        return self.dense(self.lambadd * out + pooled)
 
