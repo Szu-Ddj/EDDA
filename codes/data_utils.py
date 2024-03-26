@@ -138,15 +138,11 @@ class Tokenizer4Bert:
         self.tokenizer.add_tokens([])
 
     def text_to_sequence(self, text, reverse=False, padding='post', truncating='post'):
-        if 'prompt' in self.model_name or self.model_name == 'MPLN':
-            truc = False
-        else:
-            truc = True
 
         if len(text) == 1:
-            sequence = self.tokenizer.encode_plus(text[0],max_length=self.max_seq_len + add,padding='max_length',truncation=truc,return_tensors='pt').values()
+            sequence = self.tokenizer.encode_plus(text[0],max_length=self.max_seq_len + add,padding='max_length',truncation=True,return_tensors='pt').values()
         else:
-            sequence = self.tokenizer.encode_plus(text[0],text_pair=text[1],max_length=self.max_seq_len + add,padding='max_length',truncation=truc,return_tensors='pt').values()
+            sequence = self.tokenizer.encode_plus(text[0],text_pair=text[1],max_length=self.max_seq_len + add,padding='max_length',truncation=True,return_tensors='pt').values()
         sequence = [item.squeeze(0) for item in sequence]
 
         if len(sequence[0]) > self.max_seq_len + add:
@@ -197,7 +193,7 @@ class ABSADataset(Dataset):
                         bert_reason_target = tokenizer.text_to_sequence([reason,target])
                         # bert_text_reason_target = tokenizer.text_to_sequence([text + '[SEP]' + reason,target])
                         
-                        if opt.model_name == 'bert' in opt.model_name:
+                        if 'bert' in opt.model_name:
                             data = {
                                 'bert_text_inputs': bert_text[0],
                                 'bert_text_type': bert_text[1],
