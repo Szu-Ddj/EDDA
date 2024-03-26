@@ -17,6 +17,5 @@ from models.mgan import MGAN
 # from models.lcf_bert import LCF_BERT
 from models.asgcn import ASGCN
 from models.asgcn_roberta import ASGCN_Bert
-from models.bert_lstm import BERT_LSTM
 from models.bart import bart_classifier
 
