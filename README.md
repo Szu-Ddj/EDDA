@@ -1,2 +1,2 @@
 # EDDA
-Released code for「EDDA: A Encoder-Decoder Data Augmentation Framework for Zero-Shot Stance Detection
+Released Release partial code for「EDDA: A Encoder-Decoder Data Augmentation Framework for Zero-Shot Stance Detectio」
