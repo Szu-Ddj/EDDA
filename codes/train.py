@@ -18,7 +18,7 @@ import torch.nn as nn
 from torch.utils.data import DataLoader, random_split, ConcatDataset
 
 from data_utils import build_tokenizer, build_embedding_matrix, Tokenizer4Bert, ABSADataset
-from models import LSTM, IAN, MemNet, RAM, TD_LSTM, TC_LSTM, Cabasc, ATAE_LSTM, TNet_LF, AOA, MGAN, ASGCN,BERT_LSTM
+from models import LSTM, IAN, MemNet, RAM, TD_LSTM, TC_LSTM, Cabasc, ATAE_LSTM, TNet_LF, AOA, MGAN, ASGCN
 from models.bert_spc import BERT_SPC
 from models.bert_rn import BERT_RN
 from transformers import logging as tlog
@@ -345,7 +345,6 @@ def main():
 
     model_classes = {
         'lstm': LSTM,
-        'bert_lstm': BERT_LSTM,
         'bert': BERT_SPC,
         'td_lstm': TD_LSTM,
         'tc_lstm': TC_LSTM,
